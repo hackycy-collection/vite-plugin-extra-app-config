@@ -1,7 +1,7 @@
 {
   "name": "vite-plugin-extra-app-config",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "packageManager": "pnpm@10.28.1",
   "author": "hackycy <hackycy@outlook.com>",
   "license": "MIT",
