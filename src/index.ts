@@ -87,7 +87,7 @@ export function ViteExtraAppConfigPlugin(options: PluginOptions): PluginOption |
     name: 'vite:extra-app-config',
     async configResolved(config) {
       publicPath = ensureTrailingSlash(base ?? config.base)
-      source = getConfigSource(globalVarName!, envPrefixMatch!, envDir!, config.envPrefix)
+      source = getConfigSource(globalVarName!, envPrefixMatch!, envDir!, config.mode, config.envPrefix)
     },
     async generateBundle() {
       try {

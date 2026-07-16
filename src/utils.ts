@@ -2,22 +2,25 @@ import { createHash } from 'node:crypto'
 import process from 'node:process'
 import { loadEnv } from 'vite'
 
+/**
+ * @deprecated Use the resolved mode from Vite's `configResolved` hook instead.
+ */
 export function getEnvMode(): string {
   const script = process.env.npm_lifecycle_script as string
-  const reg = /--mode ([\d_a-z]+)/
+  const reg = /(?:^|\s)--mode(?:\s+|=)(["']?)([\w.-]+)\1(?=\s|$)/i
   const result = reg.exec(script)
   let mode = 'production'
   if (result) {
-    mode = result[1] as string
+    mode = result[2] as string
   }
 
   return mode
 }
 
-export function getConfigSource(varName: string, match: string, envDir: string, envPrefix?: string | string[]): string {
+export function getConfigSource(varName: string, match: string, envDir: string, mode: string, envPrefix?: string | string[]): string {
   const reg = new RegExp(`^(${match})`)
 
-  const config = loadEnv(getEnvMode(), envDir, envPrefix)
+  const config = loadEnv(mode, envDir, envPrefix)
   Object.keys(config).forEach((key) => {
     if (!reg.test(key)) {
       Reflect.deleteProperty(config, key)

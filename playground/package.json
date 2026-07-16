@@ -3,6 +3,11 @@
   "private": true,
   "scripts": {
     "build": "vite build",
+    "build:staging": "vite build --mode staging",
+    "build:preview": "vite build --mode preview",
+    "build:canary": "vite build --mode production-canary",
+    "build:staging-east": "vite build --mode staging.east",
+    "build:staging_east": "vite build --mode staging_east",
     "dev": "vite"
   },
   "devDependencies": {

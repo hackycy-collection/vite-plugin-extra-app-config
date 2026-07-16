@@ -34,7 +34,7 @@
     "prepublishOnly": "nr build",
     "release": "bumpp",
     "start": "tsx src/index.ts",
-    "test": "pnpm -F ./playground build",
+    "test": "vitest run && pnpm -F ./playground build",
     "typecheck": "tsc",
     "prepare": "simple-git-hooks"
   },
